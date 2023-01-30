@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_app/application/home_controller.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -9,8 +11,11 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Details Page'),
       ),
-      body: Container(
-        child: const Text('Details Page'),
+      body: GetBuilder<HomeController>(
+        init: HomeController(),
+        builder: (controllerState) {
+          return Text('Temprature is ${controllerState.userData.rating?.rate}');
+        },
       ),
     );
   }
