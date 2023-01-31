@@ -8,13 +8,18 @@ import '../domain/user_data_models.dart';
 class UserRepository {
   final Dio dioInstance = Dio();
 
-  Future<Either<String, UserData>> fetchUserData() async {
+  Future<Either<String, List<UserData>>> fetchUserData() async {
     try {
       Response responseData = await dioInstance.get(ApiEndpoints.userDataURL);
       if (responseData.statusCode == 200) {
-        UserData userInfo = UserData.fromJson(responseData.data);
-        debugPrint(responseData.toString());
-        return right(userInfo);
+        // UserData userInfo = UserData.fromJson(responseData.data);
+        List<UserData> dataList = [];
+        (responseData.data as List).forEach((jsonItem) {
+          UserData item = UserData.fromJson(jsonItem);
+          dataList.add(item);
+        });
+        // debugPrint(responseData.toString());
+        return right(dataList);
       } else {
         return left(errorStringWrong);
       }

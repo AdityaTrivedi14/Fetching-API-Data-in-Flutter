@@ -1,11 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/application/home_controller.dart';
 
 import 'presentation/detail_page.dart';
 import 'presentation/home_page.dart';
 
 void main() {
   runApp(const MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +30,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       getPages: [
         GetPage(name: '/home', page: () => const HomePage()),
-        GetPage(name: '/detail', page: () => const DetailPage()),
+        GetPage(
+          name: '/detail',
+          page: () => const DetailPage(),
+        ),
       ],
       title: 'API Calling',
       theme: ThemeData(

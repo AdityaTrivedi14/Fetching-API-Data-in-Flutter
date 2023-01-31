@@ -7,7 +7,7 @@ class HomeController extends GetxController {
   final UserRepository userRepository = UserRepository();
 
   bool loading = false;
-  late UserData userData;
+  late List<UserData> userData;
   bool isError = false;
   String errorMessage = '';
 
@@ -20,12 +20,12 @@ class HomeController extends GetxController {
   fetchUserData() async {
     loading = true;
     update();
-    Either<String, UserData> userResponse =
+    Either<String, List<UserData>> userResponse =
         await userRepository.fetchUserData();
     userResponse.fold((l) {
       isError = true;
       errorMessage = l;
-    }, (UserData r) {
+    }, (List<UserData> r) {
       userData = r;
     });
     loading = false;
