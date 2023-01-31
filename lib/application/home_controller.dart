@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import '../domain/user_data_models.dart';
 import '../infrastructure/user_repository.dart';
@@ -31,4 +32,6 @@ class HomeController extends GetxController {
     loading = false;
     update();
   }
+
+  of(BuildContext context) {}
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/application/home_bindings.dart';
 import 'package:my_app/application/home_controller.dart';
 
 import 'presentation/detail_page.dart';
@@ -29,11 +30,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: '/home',
       getPages: [
-        GetPage(name: '/home', page: () => const HomePage()),
         GetPage(
-          name: '/detail',
-          page: () => const DetailPage(),
-        ),
+            name: '/home',
+            page: () => const HomePage(),
+            binding: HomeBindings()),
+        GetPage(
+            name: '/detail', page: () => DetailPage(), binding: HomeBindings()),
       ],
       title: 'API Calling',
       theme: ThemeData(
