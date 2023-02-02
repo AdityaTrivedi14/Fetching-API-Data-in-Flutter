@@ -63,12 +63,13 @@ class HomePage extends StatelessWidget {
                             'userId': controllerState.userData[index].userId,
                             'title': controllerState.userData[index].title,
                             'id': controllerState.userData[index].id,
+                            'body': controllerState.userData[index].body,
                           });
                         },
                         child: Card(
                           // borderRadius: BorderRadius.circular(10),
-                          color: Colors.purple,
-                          elevation: 4,
+                          color: Colors.white,
+                          elevation: 10,
                           // height: 60,
                           margin: const EdgeInsets.only(
                             bottom: 15,
@@ -87,7 +88,7 @@ class HomePage extends StatelessWidget {
                                     'User Id: ${controllerState.userData[index].id.toString()}',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                      // color: Colors.white,
                                     ),
                                   ),
                                   const SizedBox(

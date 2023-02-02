@@ -2,15 +2,15 @@ class UserData {
   int? userId;
   int? id;
   String? title;
-  bool? completed;
+  String? body;
 
-  UserData({this.userId, this.id, this.title, this.completed});
+  UserData({this.userId, this.id, this.title, this.body});
 
   UserData.fromJson(Map<String, dynamic> json) {
     userId = json['userId'];
     id = json['id'];
     title = json['title'];
-    completed = json['completed'];
+    body = json['body'];
   }
 
   Map<String, dynamic> toJson() {
@@ -18,7 +18,7 @@ class UserData {
     data['userId'] = this.userId;
     data['id'] = this.id;
     data['title'] = this.title;
-    data['completed'] = this.completed;
+    data['body'] = this.body;
     return data;
   }
 }
